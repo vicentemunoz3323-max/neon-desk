@@ -1,7 +1,7 @@
 /* Service worker de Neon Desk
    Guarda la app en el celular para que abra sin internet.
    Para publicar una actualización: cambia VERSION (y sube los archivos). */
-const VERSION = '1.2.0';
+const VERSION = '1.2.1';
 const CACHE = 'neon-desk-' + VERSION;
 const ARCHIVOS = [
   './',
@@ -17,7 +17,7 @@ const ARCHIVOS = [
 
 // Instalar: descarga todo y lo guarda. No se activa solo; espera a que el usuario toque "Actualizar ahora".
 self.addEventListener('install', (e) => {
-  e.waitUntil(caches.open(CACHE).then((c) => c.addAll(ARCHIVOS)));
+  e.waitUntil(caches.open(CACHE).then((c) => c.addAll(ARCHIVOS.map((u) => new Request(u, { cache: 'reload' })))));
 });
 
 // Activar: borra las versiones viejas
