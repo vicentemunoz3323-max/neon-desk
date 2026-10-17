@@ -81,7 +81,7 @@ const cursor = $('typing');
 let lineaActual = null, restante = 0, sangria = 0;
 
 /* Firma: se escribe letra por letra y luego arranca el código */
-const FIRMA = 'Creado por Vicente M en serverus computer - version nueva';
+const FIRMA = 'Creado por Vicente M en serverus computer - version 3';
 let letras = 0;
 function escribirFirma() {
   $('autor-txt').textContent = FIRMA.slice(0, ++letras);
