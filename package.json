@@ -1,6 +1,6 @@
 {
   "name": "neon-desk",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Animación de escritorio de desarrollo web en Electron",
   "author": "Vicente M",
   "main": "main.js",
