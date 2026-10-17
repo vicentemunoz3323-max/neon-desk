@@ -6,7 +6,7 @@
   "main": "main.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/TU_USUARIO/neon-desk.git"
+    "url": "https://github.com/vicentemunoz3323-max/neon-desk.git"
   },
   "scripts": {
     "start": "electron .",
@@ -33,7 +33,7 @@
     "publish": [
       {
         "provider": "github",
-        "owner": "TU_USUARIO",
+        "owner": "vicentemunoz3323-max",
         "repo": "neon-desk",
         "releaseType": "release"
       }
