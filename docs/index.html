@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <title>Neon Desk</title>
+  <meta name="description" content="Animación de escritorio de desarrollo web con estilo neón.">
+  <meta name="theme-color" content="#071a44">
+
+  <!-- PWA -->
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Neon Desk">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="fondo">
+    <div id="bokeh"></div>
+
+    <!-- Escenario de 1600x1000 que se escala (y gira en vertical) para llenar la pantalla -->
+    <div id="stage">
+
+      <!-- Cables punteados y pulsos -->
+      <svg id="wires" viewBox="0 0 1600 1000" aria-hidden="true">
+        <defs>
+          <filter id="brillo" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="3" result="b"/>
+            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <g id="wire-paths"></g>
+        <g id="wire-pulses" filter="url(#brillo)"></g>
+      </svg>
+
+      <!-- Etiquetas de lenguajes con anillos neón -->
+      <div class="tag tag-html" style="left:820px; top:92px">
+        <span class="chev">&lsaquo;</span>HTML<span class="chev">&rsaquo;</span>
+      </div>
+      <div class="ring ring-sm ring-cyan" style="left:1132px; top:44px"></div>
+      <div class="tag" style="left:1196px; top:56px">CSS</div>
+      <div class="ring ring-md ring-green" style="left:1300px; top:150px"><span class="arc"></span></div>
+      <div class="tag" style="left:1396px; top:176px">JS</div>
+      <div class="ring ring-sm ring-pink" style="left:1166px; top:318px"></div>
+      <div class="tag" style="left:1232px; top:330px">PHP</div>
+      <div class="ring ring-xl ring-pink" style="left:150px; top:70px"><span class="glow"></span></div>
+
+      <!-- Planta -->
+      <svg class="planta" style="left:600px; top:140px" width="170" height="160" viewBox="0 0 170 160" aria-hidden="true">
+        <ellipse cx="85" cy="122" rx="56" ry="32" fill="#e9eef8"/>
+        <ellipse cx="85" cy="116" rx="44" ry="22" fill="#3a2a22"/>
+        <g class="hojas"><ellipse cx="85" cy="58" rx="13" ry="34" fill="#1e8f3e" transform="rotate(-75 85 100)"/><ellipse cx="85" cy="58" rx="13" ry="34" fill="#239a44" transform="rotate(75 85 100)"/><ellipse cx="85" cy="58" rx="13" ry="40" fill="#2fbf55" transform="rotate(-50 85 100)"/><ellipse cx="85" cy="58" rx="13" ry="40" fill="#2bb150" transform="rotate(50 85 100)"/><ellipse cx="85" cy="58" rx="13" ry="44" fill="#3fd066" transform="rotate(-25 85 100)"/><ellipse cx="85" cy="58" rx="13" ry="44" fill="#3acb61" transform="rotate(25 85 100)"/><ellipse cx="85" cy="58" rx="13" ry="46" fill="#53e07a" transform="rotate(0 85 100)"/><ellipse cx="85" cy="58" rx="13" ry="30" fill="#6cf08e" transform="rotate(-12 85 100)"/><ellipse cx="85" cy="58" rx="13" ry="30" fill="#66ea88" transform="rotate(12 85 100)"/></g>
+      </svg>
+
+      <!-- Tableta -->
+      <div class="tablet" style="left:110px; top:240px">
+        <div class="tablet-screen">
+          <div class="tablet-top"><span></span><span></span><span></span></div>
+          <div class="tablet-title">ENGINE<br>......</div>
+          <div class="tablet-bar"><i></i></div>
+          <div class="tablet-avatar"></div>
+        </div>
+      </div>
+
+      <!-- Tarjetas pequeñas (iconos de UI) -->
+      <div class="card card-lines" style="left:322px; top:100px"><i></i><i></i><i></i><i></i></div>
+      <div class="card card-img" style="left:322px; top:172px">
+        <svg viewBox="0 0 60 44"><circle cx="40" cy="12" r="5"/><path d="M4 40 L22 18 L34 30 L42 24 L56 40 Z"/></svg>
+      </div>
+      <div class="chevrons" style="left:130px; top:600px">&laquo;</div>
+      <div class="card card-check" style="left:110px; top:690px"><i></i><i></i><i></i></div>
+      <div class="card card-mail" style="left:110px; top:790px">
+        <svg viewBox="0 0 60 44"><rect x="3" y="4" width="54" height="36" rx="3"/><path d="M3 6 L30 26 L57 6"/></svg>
+      </div>
+      <div class="card card-video" style="left:224px; top:722px">
+        <svg viewBox="0 0 60 44"><circle cx="30" cy="22" r="14"/><path d="M26 15 L37 22 L26 29 Z"/></svg>
+      </div>
+      <svg class="mini-chart" style="left:110px; top:880px" width="130" height="60" viewBox="0 0 130 60" aria-hidden="true">
+        <path id="mini-area" fill="rgba(255,120,190,.35)" stroke="#ff8fd0" stroke-width="2"/>
+      </svg>
+
+      <!-- Columnas de código -->
+      <div class="code-col" id="code-a" style="left:452px; top:90px; width:130px; height:230px"></div>
+      <div class="code-col" id="code-b" style="left:1012px; top:120px; width:120px; height:470px"></div>
+      <div class="code-col" id="code-c" style="left:1372px; top:540px; width:130px; height:330px"></div>
+      <div class="code-col" id="code-d" style="left:800px; top:150px; width:160px; height:160px"></div>
+
+      <!-- Laptop -->
+      <div class="laptop" style="left:450px; top:330px">
+        <div class="lid">
+          <div class="screen" id="screen">
+            <div class="autor"><span class="prompt">$</span> <span id="autor-txt"></span><span class="autor-cursor"></span></div>
+            <div class="cursor-line" id="typing"></div>
+          </div>
+        </div>
+        <div class="hinge"></div>
+        <div class="base">
+          <div class="keyboard" id="keyboard"></div>
+          <div class="trackpad"></div>
+        </div>
+      </div>
+
+      <!-- Taza de café -->
+      <div class="cafe" style="left:1060px; top:186px">
+        <svg class="vapor" width="90" height="90" viewBox="0 0 90 90" aria-hidden="true">
+          <path d="M30 80 C20 60 42 50 32 30 C26 18 36 10 34 2"/>
+          <path d="M46 80 C36 60 58 50 48 30 C42 18 52 10 50 2"/>
+          <path d="M62 80 C52 60 74 50 64 30 C58 18 68 10 66 2"/>
+        </svg>
+        <div class="taza"><div class="liquido"></div></div>
+        <div class="asa"></div>
+      </div>
+
+      <!-- Teléfono -->
+      <div class="phone" style="left:1190px; top:420px">
+        <div class="phone-screen">
+          <div class="phone-avatar"></div>
+          <div class="phone-bar"><i></i></div>
+          <svg class="phone-chart" viewBox="0 0 120 60"><path id="phone-line" fill="none" stroke="#5ff2ff" stroke-width="2.5" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+
+      <!-- Ecualizador inferior -->
+      <div class="eq" id="eq" style="left:560px; top:930px"></div>
+    </div>
+  </div>
+
+  <!-- Botón de actualizar -->
+  <button id="btn-update" class="btn-update" type="button" title="Buscar actualizaciones">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.34-5.66"/><path d="M20 4v5h-5"/></svg>
+    <span>Actualizar</span>
+    <i class="punto"></i>
+  </button>
+
+  <!-- Notificación (actualizaciones / instalar) -->
+  <div id="toast" class="toast" role="status" aria-live="polite">
+    <div class="toast-icono">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M4 20h16"/></svg>
+    </div>
+    <div class="toast-cuerpo">
+      <strong id="toast-titulo"></strong>
+      <span id="toast-msg"></span>
+      <div class="toast-barra" id="toast-barra"><i id="toast-prog"></i></div>
+      <div class="toast-acciones">
+        <button id="toast-ok" type="button" class="primario"></button>
+        <button id="toast-cerrar" type="button">Después</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="version"></div>
+  <div id="hint">Toca la pantalla para verla completa</div>
+  <script src="app.js"></script>
+</body>
+</html>
