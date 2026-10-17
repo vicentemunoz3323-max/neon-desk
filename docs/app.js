@@ -4,25 +4,39 @@ const azar = (a, b) => a + Math.random() * (b - a);
 const elegir = (l) => l[Math.floor(Math.random() * l.length)];
 const COLORES = ['#ff6fb3', '#ff9fd2', '#ffd36b', '#7fe7ff', '#b08cff', '#ff5a8a', '#9ef0c8'];
 
-/* ---------- Escalar el escenario para que siempre llene la pantalla ----------
-   En horizontal se escala igual que en escritorio.
-   En vertical (celular parado) el escritorio se gira 90° para aprovechar toda la pantalla. */
+/* ---------- Dos acomodos: horizontal (como en escritorio) y vertical (celular parado) ---------- */
 const stage = $('stage');
+const wires = $('wires');
+const MEDIDAS = { horizontal: [1600, 1000], vertical: [1000, 1900] };
+const posicionables = [...document.querySelectorAll('[data-v]')].map((el) => ({
+  el,
+  h: { left: el.style.left, top: el.style.top, width: el.style.width, height: el.style.height },
+  v: (([l, t, w, al]) => ({ left: l + 'px', top: t + 'px', width: w ? w + 'px' : '', height: al ? al + 'px' : '' }))(el.dataset.v.split(','))
+}));
+let acomodo = null;
+
 function ajustar() {
-  const w = innerWidth, h = innerHeight;
-  const vertical = h > w * 1.15;
-  document.body.classList.toggle('vertical', vertical);
-  if (vertical) {
-    const s = Math.min(h / 1600, w / 1000);
-    stage.style.transform = `rotate(90deg) scale(${s}) translate(-800px, -500px)`;
-  } else {
-    const s = Math.min(w / 1600, h / 1000);
-    stage.style.transform = `scale(${s}) translate(-800px, -500px)`;
+  const vw = innerWidth, vh = innerHeight;
+  const nuevo = vh > vw ? 'vertical' : 'horizontal';
+  if (nuevo !== acomodo) {
+    acomodo = nuevo;
+    document.body.classList.toggle('vertical', nuevo === 'vertical');
+    const [W, H] = MEDIDAS[nuevo];
+    stage.style.width = W + 'px'; stage.style.height = H + 'px';
+    wires.setAttribute('viewBox', `0 0 ${W} ${H}`);
+    wires.style.width = W + 'px'; wires.style.height = H + 'px';
+    for (const p of posicionables) {
+      const pos = nuevo === 'vertical' ? p.v : p.h;
+      p.el.style.left = pos.left; p.el.style.top = pos.top;
+      if (pos.width) p.el.style.width = pos.width;
+      if (pos.height) p.el.style.height = pos.height;
+    }
+    construirCables(RUTAS[nuevo]);
   }
+  const [W, H] = MEDIDAS[acomodo];
+  const s = Math.min(vw / W, vh / H);
+  stage.style.transform = `scale(${s}) translate(${-W / 2}px, ${-H / 2}px)`;
 }
-addEventListener('resize', ajustar);
-addEventListener('orientationchange', () => setTimeout(ajustar, 200));
-ajustar();
 
 /* ---------- Bokeh ---------- */
 for (let i = 0; i < 18; i++) {
@@ -57,7 +71,7 @@ for (const col of document.querySelectorAll('.code-col')) {
   const ancho = col.clientWidth;
   const scroll = document.createElement('div');
   scroll.className = 'code-scroll';
-  const n = Math.ceil(col.clientHeight / 16) + 6;
+  const n = Math.ceil(480 / 16) + 6;
   const lineas = Array.from({ length: n }, () => lineaCodigo(ancho));
   for (const l of lineas) scroll.appendChild(l);
   for (const l of lineas) scroll.appendChild(l.cloneNode(true));   // copia para que el ciclo no brinque
@@ -123,39 +137,67 @@ function escribir() {
 }
 
 /* ---------- Cables punteados con pulsos ---------- */
-const RUTAS = [
-  ['M 300 125 H 322', 'cyan'],
-  ['M 386 125 H 452', 'cyan'],
-  ['M 582 118 H 820', ''],
-  ['M 960 112 H 1132 V 66', 'cyan'],
-  ['M 1178 66 H 1300 V 192', ''],
-  ['M 1384 192 H 1520 V 500 H 1500', ''],
-  ['M 1132 342 H 1166', 'cyan'],
-  ['M 1212 342 H 1360 V 540', ''],
-  ['M 980 130 V 600 H 1190', ''],
-  ['M 440 470 H 340 V 610', 'cyan'],
-  ['M 340 690 V 760 H 224', ''],
-  ['M 1150 700 H 1372', 'cyan'],
-  ['M 450 640 H 260 V 880', ''],
-  ['M 1265 710 V 900 H 860', 'cyan']
-];
+const RUTAS = {
+  horizontal: [
+    ['M 300 125 H 322', 'cyan'],
+    ['M 386 125 H 452', 'cyan'],
+    ['M 582 118 H 820', ''],
+    ['M 960 112 H 1132 V 66', 'cyan'],
+    ['M 1178 66 H 1300 V 192', ''],
+    ['M 1384 192 H 1520 V 500 H 1500', ''],
+    ['M 1132 342 H 1166', 'cyan'],
+    ['M 1212 342 H 1360 V 540', ''],
+    ['M 980 130 V 600 H 1190', ''],
+    ['M 440 470 H 340 V 610', 'cyan'],
+    ['M 340 690 V 760 H 224', ''],
+    ['M 1150 700 H 1372', 'cyan'],
+    ['M 450 640 H 260 V 880', ''],
+    ['M 1265 710 V 900 H 860', 'cyan']
+  ],
+  vertical: [
+    ['M 240 125 H 290', 'cyan'],
+    ['M 354 125 H 400', 'cyan'],
+    ['M 530 86 H 735', ''],
+    ['M 905 86 H 960 V 523 H 846', ''],
+    ['M 793 196 V 230', 'cyan'],
+    ['M 770 272 H 600 V 360', ''],
+    ['M 420 440 H 460', 'cyan'],
+    ['M 620 440 H 660', 'cyan'],
+    ['M 823 546 V 800 H 810', ''],
+    ['M 255 580 V 900 H 190', 'cyan'],
+    ['M 300 1250 V 1285 H 185 V 1310', ''],
+    ['M 520 1250 V 1320', 'cyan'],
+    ['M 800 1250 V 1280 H 940 V 1460 H 884', ''],
+    ['M 185 1600 V 1795 H 200', 'cyan'],
+    ['M 755 1640 V 1795 H 800', '']
+  ]
+};
 const svgNS = 'http://www.w3.org/2000/svg';
 const pulsos = [];
-for (const [d, cls] of RUTAS) {
-  const p = document.createElementNS(svgNS, 'path');
-  p.setAttribute('d', d);
-  p.setAttribute('class', 'wire ' + cls);
-  $('wire-paths').appendChild(p);
-  const largo = p.getTotalLength();
-  const n = largo > 400 ? 2 : 1;
-  for (let i = 0; i < n; i++) {
-    const c = document.createElementNS(svgNS, 'circle');
-    c.setAttribute('r', '4.5');
-    c.setAttribute('fill', cls ? '#9ff3ff' : '#b4ffd2');
-    $('wire-pulses').appendChild(c);
-    pulsos.push({ p, c, largo, pos: Math.random(), vel: azar(90, 170) / largo });
+function construirCables(rutas) {
+  $('wire-paths').textContent = '';
+  $('wire-pulses').textContent = '';
+  pulsos.length = 0;
+  for (const [d, cls] of rutas) {
+    const p = document.createElementNS(svgNS, 'path');
+    p.setAttribute('d', d);
+    p.setAttribute('class', 'wire ' + cls);
+    $('wire-paths').appendChild(p);
+    const largo = p.getTotalLength();
+    const n = largo > 400 ? 2 : 1;
+    for (let i = 0; i < n; i++) {
+      const c = document.createElementNS(svgNS, 'circle');
+      c.setAttribute('r', '4.5');
+      c.setAttribute('fill', cls ? '#9ff3ff' : '#b4ffd2');
+      $('wire-pulses').appendChild(c);
+      pulsos.push({ p, c, largo, pos: Math.random(), vel: azar(90, 170) / largo });
+    }
   }
 }
+
+ajustar();
+addEventListener('resize', ajustar);
+addEventListener('orientationchange', () => setTimeout(ajustar, 200));
 
 /* ---------- Gráficas ---------- */
 const datosTel = Array.from({ length: 24 }, () => azar(10, 50));

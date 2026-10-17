@@ -1,7 +1,7 @@
 /* Service worker de Neon Desk
    Guarda la app en el celular para que abra sin internet.
    Para publicar una actualización: cambia VERSION (y sube los archivos). */
-const VERSION = '1.1.0';
+const VERSION = '1.2.0';
 const CACHE = 'neon-desk-' + VERSION;
 const ARCHIVOS = [
   './',

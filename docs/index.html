@@ -23,7 +23,7 @@
   <div id="fondo">
     <div id="bokeh"></div>
 
-    <!-- Escenario de 1600x1000 que se escala (y gira en vertical) para llenar la pantalla -->
+    <!-- Escenario: 1600x1000 en horizontal, 1000x1900 en vertical (se reacomoda solo) -->
     <div id="stage">
 
       <!-- Cables punteados y pulsos -->
@@ -39,26 +39,26 @@
       </svg>
 
       <!-- Etiquetas de lenguajes con anillos neón -->
-      <div class="tag tag-html" style="left:820px; top:92px">
+      <div class="tag tag-html" style="left:820px; top:92px" data-v="740,64">
         <span class="chev">&lsaquo;</span>HTML<span class="chev">&rsaquo;</span>
       </div>
-      <div class="ring ring-sm ring-cyan" style="left:1132px; top:44px"></div>
-      <div class="tag" style="left:1196px; top:56px">CSS</div>
-      <div class="ring ring-md ring-green" style="left:1300px; top:150px"><span class="arc"></span></div>
-      <div class="tag" style="left:1396px; top:176px">JS</div>
-      <div class="ring ring-sm ring-pink" style="left:1166px; top:318px"></div>
-      <div class="tag" style="left:1232px; top:330px">PHP</div>
-      <div class="ring ring-xl ring-pink" style="left:150px; top:70px"><span class="glow"></span></div>
+      <div class="ring ring-sm ring-cyan" style="left:1132px; top:44px" data-v="770,150"></div>
+      <div class="tag" style="left:1196px; top:56px" data-v="830,160">CSS</div>
+      <div class="ring ring-md ring-green" style="left:1300px; top:150px" data-v="770,230"><span class="arc"></span></div>
+      <div class="tag" style="left:1396px; top:176px" data-v="866,256">JS</div>
+      <div class="ring ring-sm ring-pink" style="left:1166px; top:318px" data-v="800,500"></div>
+      <div class="tag" style="left:1232px; top:330px" data-v="860,510">PHP</div>
+      <div class="ring ring-xl ring-pink" style="left:150px; top:70px" data-v="90,90"><span class="glow"></span></div>
 
       <!-- Planta -->
-      <svg class="planta" style="left:600px; top:140px" width="170" height="160" viewBox="0 0 170 160" aria-hidden="true">
+      <svg class="planta" style="left:600px; top:140px" data-v="545,120" width="170" height="160" viewBox="0 0 170 160" aria-hidden="true">
         <ellipse cx="85" cy="122" rx="56" ry="32" fill="#e9eef8"/>
         <ellipse cx="85" cy="116" rx="44" ry="22" fill="#3a2a22"/>
         <g class="hojas"><ellipse cx="85" cy="58" rx="13" ry="34" fill="#1e8f3e" transform="rotate(-75 85 100)"/><ellipse cx="85" cy="58" rx="13" ry="34" fill="#239a44" transform="rotate(75 85 100)"/><ellipse cx="85" cy="58" rx="13" ry="40" fill="#2fbf55" transform="rotate(-50 85 100)"/><ellipse cx="85" cy="58" rx="13" ry="40" fill="#2bb150" transform="rotate(50 85 100)"/><ellipse cx="85" cy="58" rx="13" ry="44" fill="#3fd066" transform="rotate(-25 85 100)"/><ellipse cx="85" cy="58" rx="13" ry="44" fill="#3acb61" transform="rotate(25 85 100)"/><ellipse cx="85" cy="58" rx="13" ry="46" fill="#53e07a" transform="rotate(0 85 100)"/><ellipse cx="85" cy="58" rx="13" ry="30" fill="#6cf08e" transform="rotate(-12 85 100)"/><ellipse cx="85" cy="58" rx="13" ry="30" fill="#66ea88" transform="rotate(12 85 100)"/></g>
       </svg>
 
       <!-- Tableta -->
-      <div class="tablet" style="left:110px; top:240px">
+      <div class="tablet" style="left:110px; top:240px" data-v="90,350">
         <div class="tablet-screen">
           <div class="tablet-top"><span></span><span></span><span></span></div>
           <div class="tablet-title">ENGINE<br>......</div>
@@ -68,30 +68,30 @@
       </div>
 
       <!-- Tarjetas pequeñas (iconos de UI) -->
-      <div class="card card-lines" style="left:322px; top:100px"><i></i><i></i><i></i><i></i></div>
-      <div class="card card-img" style="left:322px; top:172px">
+      <div class="card card-lines" style="left:322px; top:100px" data-v="290,90"><i></i><i></i><i></i><i></i></div>
+      <div class="card card-img" style="left:322px; top:172px" data-v="290,162">
         <svg viewBox="0 0 60 44"><circle cx="40" cy="12" r="5"/><path d="M4 40 L22 18 L34 30 L42 24 L56 40 Z"/></svg>
       </div>
-      <div class="chevrons" style="left:130px; top:600px">&laquo;</div>
-      <div class="card card-check" style="left:110px; top:690px"><i></i><i></i><i></i></div>
-      <div class="card card-mail" style="left:110px; top:790px">
+      <div class="chevrons" style="left:130px; top:600px" data-v="720,1300">&laquo;</div>
+      <div class="card card-check" style="left:110px; top:690px" data-v="700,1390"><i></i><i></i><i></i></div>
+      <div class="card card-mail" style="left:110px; top:790px" data-v="700,1480">
         <svg viewBox="0 0 60 44"><rect x="3" y="4" width="54" height="36" rx="3"/><path d="M3 6 L30 26 L57 6"/></svg>
       </div>
-      <div class="card card-video" style="left:224px; top:722px">
+      <div class="card card-video" style="left:224px; top:722px" data-v="820,1435">
         <svg viewBox="0 0 60 44"><circle cx="30" cy="22" r="14"/><path d="M26 15 L37 22 L26 29 Z"/></svg>
       </div>
-      <svg class="mini-chart" style="left:110px; top:880px" width="130" height="60" viewBox="0 0 130 60" aria-hidden="true">
+      <svg class="mini-chart" style="left:110px; top:880px" data-v="690,1580" width="130" height="60" viewBox="0 0 130 60" aria-hidden="true">
         <path id="mini-area" fill="rgba(255,120,190,.35)" stroke="#ff8fd0" stroke-width="2"/>
       </svg>
 
       <!-- Columnas de código -->
-      <div class="code-col" id="code-a" style="left:452px; top:90px; width:130px; height:230px"></div>
-      <div class="code-col" id="code-b" style="left:1012px; top:120px; width:120px; height:470px"></div>
-      <div class="code-col" id="code-c" style="left:1372px; top:540px; width:130px; height:330px"></div>
-      <div class="code-col" id="code-d" style="left:800px; top:150px; width:160px; height:160px"></div>
+      <div class="code-col" id="code-a" style="left:452px; top:90px; width:130px; height:230px" data-v="400,70,130,230"></div>
+      <div class="code-col" id="code-b" style="left:1012px; top:120px; width:120px; height:470px" data-v="470,1320,120,330"></div>
+      <div class="code-col" id="code-c" style="left:1372px; top:540px; width:130px; height:330px" data-v="300,1320,130,330"></div>
+      <div class="code-col" id="code-d" style="left:800px; top:150px; width:160px; height:160px" data-v="460,360,160,160"></div>
 
       <!-- Laptop -->
-      <div class="laptop" style="left:450px; top:330px">
+      <div class="laptop" style="left:450px; top:330px" data-v="150,640">
         <div class="lid">
           <div class="screen" id="screen">
             <div class="autor"><span class="prompt">$</span> <span id="autor-txt"></span><span class="autor-cursor"></span></div>
@@ -106,7 +106,7 @@
       </div>
 
       <!-- Taza de café -->
-      <div class="cafe" style="left:1060px; top:186px">
+      <div class="cafe" style="left:1060px; top:186px" data-v="660,350">
         <svg class="vapor" width="90" height="90" viewBox="0 0 90 90" aria-hidden="true">
           <path d="M30 80 C20 60 42 50 32 30 C26 18 36 10 34 2"/>
           <path d="M46 80 C36 60 58 50 48 30 C42 18 52 10 50 2"/>
@@ -117,7 +117,7 @@
       </div>
 
       <!-- Teléfono -->
-      <div class="phone" style="left:1190px; top:420px">
+      <div class="phone" style="left:1190px; top:420px" data-v="110,1310">
         <div class="phone-screen">
           <div class="phone-avatar"></div>
           <div class="phone-bar"><i></i></div>
@@ -126,7 +126,7 @@
       </div>
 
       <!-- Ecualizador inferior -->
-      <div class="eq" id="eq" style="left:560px; top:930px"></div>
+      <div class="eq" id="eq" style="left:560px; top:930px" data-v="200,1770"></div>
     </div>
   </div>
 
