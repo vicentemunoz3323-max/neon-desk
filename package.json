@@ -33,7 +33,9 @@
       "app.js",
       "style.css",
       "terror.css",
-      "terror.js"
+      "terror.js",
+      "sustos.css",
+      "sustos.js"
     ],
     "publish": [
       {

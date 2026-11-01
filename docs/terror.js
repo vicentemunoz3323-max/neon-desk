@@ -2,7 +2,7 @@
 /* =========================================================
    MODO TERROR
    Botón 🎃 (o tecla T) para prenderlo y apagarlo; se recuerda.
-   Rayos, apagones, sangre escurriendo, telarañas, araña, murciélagos,
+   Rayos, luna, sangre escurriendo, telarañas, araña, murciélagos, tus propias imágenes de susto,
    fantasma, ojos en la oscuridad, calabazas, niebla y mensajes en la laptop.
    ========================================================= */
 (() => {
@@ -31,10 +31,10 @@
         <circle cx="31.5" cy="21" r="2.4" fill="#ff2020"/><circle cx="38.5" cy="21" r="2.4" fill="#ff2020"/>
         <path d="M30 40 Q35 46 40 40" stroke="#b3001b" stroke-width="2" fill="none"/>
       </svg></div>
+    <div class="t-luna"></div>
     <div class="t-vineta"></div>
     <svg class="t-calabaza izq" viewBox="0 0 200 170">${calabaza()}</svg>
     <svg class="t-calabaza der" viewBox="0 0 200 170">${calabaza()}</svg>
-    <div class="t-apagon" id="t-apagon"></div>
     <div class="t-rayo" id="t-rayo"></div>`;
   document.body.appendChild(capa);
 
@@ -146,17 +146,12 @@
     setTimeout(() => el.remove(), 5200);
   }
 
-  /* ---------- Rayo, apagones y mensajes en la laptop ---------- */
+  /* ---------- Rayo y mensajes en la laptop ---------- */
   function rayo() {
     const el = document.getElementById('t-rayo');
     el.classList.remove('on'); void el.offsetWidth; el.classList.add('on');
     document.body.classList.add('sacudir');
     setTimeout(() => document.body.classList.remove('sacudir'), 500);
-  }
-  function apagon() {
-    const el = document.getElementById('t-apagon');
-    const pasos = [.85, .1, .95, .3, .9, 0];
-    pasos.forEach((o, i) => setTimeout(() => { el.style.opacity = o; }, i * r(60, 140)));
   }
   const glitch = document.createElement('div');
   glitch.className = 't-glitch';
@@ -223,12 +218,12 @@
     timers.length = 0;
     if (on) {
       cada(9, 22, rayo);
-      cada(14, 30, apagon);
       cada(5, 11, murcielago);
       cada(12, 24, fantasma);
       cada(3, 7, ojos);
       cada(8, 16, mensaje);
       cada(2, 5, gotita);
+      if (window.sustosPropios) window.sustosPropios.iniciar(cada);
       setTimeout(murcielago, 800); setTimeout(ojos, 1500); setTimeout(rayo, 2500);
     }
   }
