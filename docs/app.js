@@ -106,7 +106,8 @@ const cursor = $('typing');
 let lineaActual = null, restante = 0, sangria = 0;
 
 /* Firma: se escribe letra por letra y luego arranca el código */
-const FIRMA = 'RealityEngine siliconmovil V3';
+const FIRMA_NORMAL = 'RealityEngine siliconmovil V3';
+let FIRMA = FIRMA_NORMAL;   // terror.js la cambia en modo terror
 let letras = 0;
 function escribirFirma() {
   $('autor-txt').textContent = FIRMA.slice(0, ++letras);
@@ -246,7 +247,7 @@ function cuadro(ahora) {
   if (accGraf > .35) {
     accGraf = 0;
     moverDatos(datosTel); moverDatos(datosMini);
-    $('phone-line').setAttribute('d', camino(datosTel, 120, 60, false));
+    $('phone-line').setAttribute('d', window.lineaTelefono ? window.lineaTelefono() : camino(datosTel, 120, 60, false));
     $('mini-area').setAttribute('d', camino(datosMini, 130, 60, true));
   }
 

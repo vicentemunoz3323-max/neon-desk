@@ -1,0 +1,176 @@
+/* =========================================================
+   MODO TERROR  (body.terror)
+   Se prende/apaga con el botón 🎃 o la tecla T. Todo es dibujo propio.
+   ========================================================= */
+
+/* ---------- Fondo y colores generales ---------- */
+body.terror, body.terror #fondo { background: #050003; }
+body.terror #fondo {
+  background:
+    radial-gradient(1000px 700px at 22% 28%, rgba(150, 0, 20, .55), transparent 60%),
+    radial-gradient(900px 700px at 85% 78%, rgba(60, 0, 90, .5), transparent 62%),
+    radial-gradient(700px 500px at 60% 110%, rgba(40, 120, 30, .25), transparent 70%),
+    linear-gradient(160deg, #1a0006 0%, #0a0004 50%, #050008 100%);
+  animation: t-temblor 0s;
+}
+body.terror .bk { background: rgba(255, 60, 40, .14); filter: blur(3px); }
+body.terror .wire { stroke: #8a0f1a; opacity: .75; }
+body.terror .wire.cyan { stroke: #4f7f2a; }
+body.terror #wire-pulses circle { fill: #ff2b2b; }
+
+/* etiquetas que parpadean como foco fallando */
+body.terror .tag { color: #ff3b3b; text-shadow: 0 0 10px #ff0000, 0 0 30px rgba(255, 0, 0, .6); animation: t-foco 4s steps(1) infinite; font-family: "Creepster", "Chiller", Georgia, serif; letter-spacing: .08em; }
+body.terror .tag:nth-of-type(2n) { animation-delay: -1.7s; animation-duration: 5.3s; }
+body.terror .chev { color: #ff6b6b; }
+@keyframes t-foco { 0%, 100% { opacity: 1; } 41% { opacity: 1; } 42% { opacity: .15; } 43% { opacity: 1; } 45% { opacity: .2; } 47% { opacity: 1; } 78% { opacity: 1; } 79% { opacity: .3; } 80% { opacity: 1; } }
+
+body.terror .ring-pink { border-color: #b3001b; box-shadow: 0 0 24px #ff0022, inset 0 0 24px #ff0022; }
+body.terror .ring-cyan { border-color: #7a8f6a; box-shadow: 0 0 10px rgba(120, 255, 80, .5); }
+body.terror .ring-green { border-color: rgba(120, 255, 60, .35); box-shadow: 0 0 22px rgba(110, 255, 50, .55); }
+body.terror .ring-green .arc { border-top-color: #9dff4a; border-right-color: #9dff4a; }
+body.terror .ring-xl .glow { background: radial-gradient(circle, rgba(255, 30, 30, .55) 0%, rgba(255, 30, 30, .12) 40%, transparent 70%); }
+
+/* planta seca */
+body.terror .planta { filter: grayscale(.85) sepia(.7) brightness(.55) contrast(1.2); }
+body.terror .hojas { animation-duration: 9s; }
+
+/* tableta, teléfono, tarjetas */
+body.terror .tablet, body.terror .phone { background: #120408; box-shadow: 0 30px 50px rgba(0, 0, 0, .7), 0 0 0 2px rgba(255, 40, 40, .25); }
+body.terror .tablet-screen, body.terror .phone-screen { background: linear-gradient(160deg, #3a0610, #12020a 60%, #1d0420); }
+body.terror .tablet-title { color: #ff4040; text-shadow: 0 0 18px #ff0000; font-family: "Creepster", "Chiller", Georgia, serif; }
+body.terror .tablet-avatar, body.terror .phone-avatar { border-color: #ff4a4a; box-shadow: 0 0 12px #ff0000; }
+body.terror .tablet-bar i, body.terror .phone-bar i { background: #ff3030; }
+body.terror .phone-chart path { stroke: #ff2a2a !important; filter: drop-shadow(0 0 4px #ff0000); }
+body.terror .card { border-color: rgba(255, 90, 90, .55); }
+body.terror .card i, body.terror .card-img svg circle { background: rgba(255, 120, 120, .8); fill: rgba(255, 120, 120, .8); }
+body.terror .card svg { stroke: rgba(255, 120, 120, .8); }
+body.terror .chevrons { color: #ff4a4a; text-shadow: 0 0 12px #ff0000; }
+body.terror .mini-chart path { fill: rgba(140, 0, 20, .45); stroke: #ff3b3b; }
+body.terror .code-col { filter: brightness(.75) sepia(1) saturate(9) hue-rotate(-48deg); }
+
+/* laptop */
+body.terror .lid { background: linear-gradient(#2a1418, #120709); box-shadow: 0 0 0 2px rgba(255, 60, 60, .2); }
+body.terror .screen { background: linear-gradient(180deg, #1a0306, #080103); box-shadow: inset 0 0 40px rgba(255, 0, 0, .25); }
+body.terror .base { background: linear-gradient(180deg, #4a3a3c 0%, #2b2022 100%); box-shadow: 0 40px 60px rgba(0, 0, 0, .7), inset 0 2px 0 rgba(255, 255, 255, .12); }
+body.terror .key { background: linear-gradient(#3a2226, #23121a); }
+body.terror .key.on { background: linear-gradient(#ff8080, #ff1f1f); box-shadow: 0 0 14px #ff2020, 0 2px 0 rgba(0, 0, 0, .35); }
+body.terror .trackpad { background: linear-gradient(#3e2e30, #2a1d20); box-shadow: inset 0 0 0 2px rgba(255, 255, 255, .06); }
+body.terror .autor { color: #ff3b3b; text-shadow: 0 0 10px rgba(255, 0, 0, .8); border-bottom-color: rgba(255, 60, 60, .25); }
+body.terror .autor .prompt { color: #9dff4a; text-shadow: 0 0 10px rgba(130, 255, 60, .7); }
+body.terror .autor-cursor, body.terror .cursor-line::after { background: #ff3b3b; }
+
+/* café de sangre */
+body.terror .taza { background: #e8e2dc; }
+body.terror .liquido { background: radial-gradient(circle at 40% 40%, #c0001a, #4a0008 70%); }
+body.terror .asa { border-color: #e8e2dc; }
+body.terror .vapor path { stroke: rgba(150, 255, 90, .5); }
+
+/* ecualizador */
+body.terror .eq i { background: linear-gradient(#ff2b2b, #3a0010); }
+
+/* botones */
+body.terror .btn-update { color: #ffb3b3; background: rgba(40, 0, 6, .6); border-color: rgba(255, 50, 50, .5); box-shadow: 0 0 14px rgba(255, 0, 0, .3); }
+body.terror .toast { background: rgba(30, 0, 6, .9); border-color: rgba(255, 60, 60, .5); }
+
+.btn-tema {
+  position: fixed; top: 16px; right: 140px; z-index: 20;
+  display: flex; align-items: center; gap: 6px; padding: 8px 14px;
+  font: 600 13px "Segoe UI", Ubuntu, Arial, sans-serif; letter-spacing: .03em; color: #bfe6ff;
+  background: rgba(10, 25, 70, .55); border: 1.5px solid rgba(111, 230, 255, .45); border-radius: 999px;
+  backdrop-filter: blur(6px); cursor: pointer;
+}
+body.terror .btn-tema { color: #ffb3b3; background: rgba(40, 0, 6, .6); border-color: rgba(255, 50, 50, .5); box-shadow: 0 0 14px rgba(255, 0, 0, .3); }
+.btn-tema:hover { filter: brightness(1.3); }
+.btn-update[hidden] ~ .btn-tema, .solo-tema { right: 16px; }
+
+/* ---------- Firma del autor (los dos modos) ---------- */
+#firma-autor { position: fixed; left: 16px; bottom: 30px; z-index: 12; pointer-events: none; display: flex; flex-direction: column; line-height: 1;
+  font: 300 28px "Segoe UI", Ubuntu, "Helvetica Neue", Arial, sans-serif; letter-spacing: .06em; color: #bfe6ff; text-shadow: 0 0 10px rgba(120, 210, 255, .9), 0 0 26px rgba(120, 210, 255, .5); animation: respirar 3.2s ease-in-out infinite; }
+#firma-autor small { font-size: 11px; letter-spacing: .3em; text-transform: uppercase; opacity: .6; margin-bottom: 4px; }
+body.terror #firma-autor { bottom: calc(14vmin + 14px); font: 400 34px "Creepster", "Chiller", Georgia, serif; color: #ff2424; text-shadow: 0 0 8px #ff0000, 0 0 24px rgba(255, 0, 0, .6), 0 3px 0 #5a0008; animation: t-foco 6s steps(1) infinite; }
+body.terror #firma-autor::after { content: ""; position: absolute; left: 22%; top: 100%; width: 4px; height: 0; border-radius: 0 0 3px 3px; background: #b3001b; animation: t-chorrea 5s ease-in infinite; }
+@keyframes t-chorrea { 0% { height: 0; opacity: 1; } 70% { height: 22px; opacity: 1; } 100% { height: 26px; opacity: 0; } }
+
+/* ---------- Capa de terror (encima de todo, no recibe clics) ---------- */
+#terror { position: fixed; inset: 0; pointer-events: none; z-index: 10; overflow: hidden; display: none; }
+body.terror #terror { display: block; }
+#terror > * { position: absolute; }
+
+/* viñeta oscura y luz que falla */
+.t-vineta { inset: 0; background: radial-gradient(ellipse at center, transparent 45%, rgba(0, 0, 0, .55) 80%, rgba(0, 0, 0, .9) 100%); }
+.t-apagon { inset: 0; background: #000; opacity: 0; transition: opacity .05s; }
+.t-rayo { inset: 0; background: #f4f0ff; opacity: 0; mix-blend-mode: screen; }
+.t-rayo.on { animation: t-rayo .9s ease-out; }
+@keyframes t-rayo { 0% { opacity: 0; } 6% { opacity: .85; } 12% { opacity: .1; } 18% { opacity: .7; } 40% { opacity: .05; } 100% { opacity: 0; } }
+body.terror.sacudir #stage { animation: t-sacudir .45s; }
+@keyframes t-sacudir { 0%, 100% { margin: 0; } 20% { margin: 4px 0 0 -6px; } 40% { margin: -3px 0 0 5px; } 60% { margin: 2px 0 0 -4px; } 80% { margin: -2px 0 0 3px; } }
+
+/* sangre escurriendo desde arriba */
+.t-sangre { left: 0; top: 0; width: 100%; height: 26vh; }
+.t-sangre .gota { transform-box: fill-box; transform-origin: top; animation: t-escurre var(--d) ease-in var(--r) infinite; }
+@keyframes t-escurre { 0% { transform: scaleY(.15); } 70% { transform: scaleY(1); } 100% { transform: scaleY(1); } }
+.t-gotita { width: 9px; height: 13px; border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; background: #9e0010; animation: t-cae 1.4s ease-in forwards; }
+@keyframes t-cae { from { transform: translateY(0); opacity: 1; } to { transform: translateY(80vh); opacity: .8; } }
+
+/* telarañas en las esquinas */
+.t-tela { width: 30vmin; height: 30vmin; opacity: .5; }
+.t-tela path { fill: none; stroke: rgba(230, 230, 230, .75); stroke-width: 1.2; }
+.t-tela.izq { left: 0; top: 0; }
+.t-tela.der { right: 0; top: 0; transform: scaleX(-1); }
+
+/* araña que baja y sube */
+.t-arana { left: 78%; top: 0; width: 70px; animation: t-arana 14s ease-in-out infinite; }
+.t-arana .hilo { position: absolute; left: 34px; bottom: 48px; width: 1.5px; height: 100vh; background: rgba(230, 230, 230, .6); }
+.t-arana svg { position: absolute; left: 0; bottom: 0; animation: t-columpio 3s ease-in-out infinite alternate; transform-origin: 35px -400px; }
+@keyframes t-arana { 0%, 12% { transform: translateY(-120px); } 35%, 60% { transform: translateY(46vh); } 64% { transform: translateY(42vh); } 68%, 80% { transform: translateY(48vh); } 100% { transform: translateY(-120px); } }
+@keyframes t-columpio { from { transform: rotate(-3deg); } to { transform: rotate(3deg); } }
+.t-arana .patas path { animation: t-patas .35s ease-in-out infinite alternate; transform-box: fill-box; transform-origin: center; }
+@keyframes t-patas { to { transform: rotate(8deg); } }
+
+/* murciélagos */
+.t-murcielago { left: 0; top: 0; width: 90px; will-change: transform; }
+.t-murcielago .ala { transform-box: fill-box; animation: t-aletear .18s ease-in-out infinite alternate; }
+.t-murcielago .ala.i { transform-origin: right center; }
+.t-murcielago .ala.d { transform-origin: left center; }
+@keyframes t-aletear { from { transform: scaleY(1); } to { transform: scaleY(-.35); } }
+
+/* fantasma */
+.t-fantasma { left: 0; top: 0; width: 150px; opacity: 0; will-change: transform, opacity; filter: drop-shadow(0 0 18px rgba(220, 240, 255, .6)); }
+.t-fantasma .falda { animation: t-ondea 1.2s ease-in-out infinite alternate; transform-box: fill-box; transform-origin: top; }
+@keyframes t-ondea { from { transform: skewX(-4deg); } to { transform: skewX(4deg); } }
+
+/* ojos en la oscuridad */
+.t-ojos { display: flex; gap: 18px; opacity: 0; animation: t-aparecer 5s ease-in-out forwards; }
+.t-ojos i { width: 22px; height: 12px; border-radius: 50%; background: radial-gradient(ellipse at center, #fff36b 0 20%, #ffb300 45%, #ff3d00 80%); box-shadow: 0 0 14px #ff9900, 0 0 30px rgba(255, 80, 0, .6); animation: t-parpadeo 2.2s infinite; }
+.t-ojos i::after { content: ""; display: block; width: 3px; height: 100%; margin: 0 auto; background: #000; border-radius: 2px; }
+@keyframes t-aparecer { 0% { opacity: 0; } 15%, 80% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes t-parpadeo { 0%, 88%, 100% { transform: scaleY(1); } 92% { transform: scaleY(.05); } }
+
+/* calabazas */
+.t-calabaza { bottom: -1vh; width: 15vmin; filter: drop-shadow(0 10px 20px rgba(0, 0, 0, .6)); }
+.t-calabaza.izq { left: 2vw; }
+.t-calabaza.der { right: 2vw; width: 11vmin; }
+.t-calabaza .luz { animation: t-vela 1.6s infinite; }
+@keyframes t-vela { 0%, 100% { opacity: 1; } 20% { opacity: .75; } 40% { opacity: .95; } 55% { opacity: .6; } 70% { opacity: 1; } 85% { opacity: .8; } }
+
+/* niebla */
+.t-niebla { left: -50%; bottom: -8vh; width: 200%; height: 38vh; background:
+  radial-gradient(ellipse 18% 45% at 10% 70%, rgba(200, 210, 220, .22), transparent 70%),
+  radial-gradient(ellipse 22% 50% at 35% 80%, rgba(200, 210, 220, .18), transparent 70%),
+  radial-gradient(ellipse 16% 40% at 60% 75%, rgba(200, 210, 220, .2), transparent 70%),
+  radial-gradient(ellipse 24% 55% at 85% 80%, rgba(200, 210, 220, .18), transparent 70%);
+  filter: blur(8px); animation: t-niebla 40s linear infinite; }
+.t-niebla.n2 { bottom: -14vh; opacity: .8; animation-duration: 65s; animation-direction: reverse; }
+@keyframes t-niebla { to { transform: translateX(25%); } }
+
+/* mensaje en la laptop */
+.t-glitch { position: absolute; inset: 0; display: none; place-items: center; background: rgba(10, 0, 0, .92); z-index: 3; }
+.t-glitch b { font: 900 54px "Creepster", "Chiller", Georgia, serif; letter-spacing: .06em; color: #ff1a1a; text-shadow: 3px 0 #00ffd0, -3px 0 #ff00aa, 0 0 24px #ff0000; animation: t-glitch .12s steps(2) infinite; }
+.t-glitch.on { display: grid; }
+body:not(.terror) .t-glitch { display: none !important; }
+@keyframes t-glitch { 0% { transform: translate(0); } 50% { transform: translate(-3px, 2px) skewX(6deg); } 100% { transform: translate(3px, -1px); } }
+
+@media (prefers-reduced-motion: reduce) {
+  #terror *, body.terror .tag { animation-duration: 0s !important; }
+  .t-rayo.on { animation: none; }
+}
